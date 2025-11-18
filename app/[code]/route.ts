@@ -40,7 +40,9 @@ export async function GET(
       where: { code },
       data: { clicks: { increment: 1 }, lastClickedAt: new Date() },
     })
-  } catch {}
+  } catch (e) {
+    console.error(`Redirect update failed for code ${code}:`, e)
+  }
 
   return NextResponse.redirect(link.url, { status: 302 })
 }

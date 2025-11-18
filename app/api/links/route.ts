@@ -15,6 +15,7 @@ export async function GET() {
     const links = await prisma.link.findMany({ orderBy: { createdAt: 'desc' } })
     return NextResponse.json(links)
   } catch (e) {
+    console.error('GET /api/links failed:', e)
     return NextResponse.json({ error: 'Failed to list links' }, { status: 500 })
   }
 }
@@ -58,6 +59,7 @@ export async function POST(req: Request) {
     const created = await prisma.link.create({ data: { code: code!, url } })
     return NextResponse.json(created, { status: 201 })
   } catch (e) {
+    console.error('POST /api/links failed:', e)
     return NextResponse.json({ error: 'Failed to create link' }, { status: 500 })
   }
 }
