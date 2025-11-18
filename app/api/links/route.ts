@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+export const runtime = 'nodejs'
 
 const CODE_REGEX = /^[A-Za-z0-9]{6,8}$/
 
